@@ -1,6 +1,6 @@
 .element {
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   max-width: min-content;
   background-color: #FFFFFF;
   border-radius: 10px;

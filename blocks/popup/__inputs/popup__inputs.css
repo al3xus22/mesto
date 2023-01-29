@@ -2,16 +2,7 @@
   padding: 0;
   margin: 0;
   border: none;
-  height: 84px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
-
-@media screen and (max-width: 670px) {
-  .popup__inputs {
-    height: 74px;
-    margin: 75px 0 45px;
-    gap: 25px;
-  }
+  gap: 25px;
 }

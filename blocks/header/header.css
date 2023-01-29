@@ -3,7 +3,7 @@
   margin: 0 auto;
   max-width: calc(1280px - 2*200px);
   min-height: 56px;
-  border-bottom: 1px solid #545454;
+  border-bottom: 1px solid rgb(84, 84, 84, 0.7);
   box-sizing: border-box;
 }
 

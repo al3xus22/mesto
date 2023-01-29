@@ -1,5 +1,6 @@
 .profile {
   padding: 40px 0 50px;
+  box-sizing: border-box;
   margin: 0 auto;
   color: #FFFFFF;
   max-width: calc(1280px - 2*200px);

@@ -9,7 +9,13 @@
   background-color: #000000;
   border-radius: 2px;
   color: #FFFFFF;
-  }
+}
+
+.popup__button-submit:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s;
+  cursor: pointer;
+}
 
 @media screen and (max-width: 670px) {
   .popup__button-submit {
