@@ -1,6 +1,7 @@
 .popup__button-submit {
   margin: 0 auto;
   padding: 0;
+  border: none;
   width: 100%;
   height: 50px;
   font-weight: 400;
@@ -9,11 +10,11 @@
   background-color: #000000;
   border-radius: 2px;
   color: #FFFFFF;
+  transition: opacity 0.5s;
 }
 
 .popup__button-submit:hover {
   opacity: 0.8;
-  transition: opacity 0.5s;
   cursor: pointer;
 }
 
