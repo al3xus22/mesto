@@ -7,13 +7,13 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  grid-column: 1/3;
+  grid-row: 2/3;
 }
 
 @media screen and (max-width: 670px) {
   .profile__job {
     text-align: center;
-    grid-column: 1/3;
-    grid-row: 2/3;
     font-size: 14px;
     line-height: 17px;
   }
