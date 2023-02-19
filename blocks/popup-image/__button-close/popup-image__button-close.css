@@ -22,9 +22,8 @@
 
 @media screen and (max-width: 670px) {
   .popup-image__button-close {
-    top: -36px;
-    left: calc(50% + 121px);
     width: 20px;
     height: 20px;
+    transform: translate(-20px, -16px);
   }
 }
