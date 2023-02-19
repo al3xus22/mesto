@@ -86,10 +86,9 @@ function openFullImage() {
     imageCard.addEventListener('click', function() {
     const popupImage = document.querySelector('.popup-image');
     const popupFullImage = popupImage.querySelector('.popup-image__full-image');
-    const titleImage = popupImage.querySelector('.popup-image_title');
+    const titleImage = popupImage.querySelector('.popup-image__title');
     const cardElement = imageCard.closest('.element');
     const cardNameElement = cardElement.querySelector('.element__name').textContent;
-    
     popupFullImage.src = imageCard.src;
     popupFullImage.alt = cardNameElement;
     titleImage.textContent = cardNameElement;
