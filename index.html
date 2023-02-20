@@ -33,13 +33,13 @@
     <div class="popup__container">
       <button class="popup__button-close" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form action="action" name="popupContainer" method="post" class="popup__form">
+      <form action="action" name="popupContainer" method="post" class="popup__form popup__form-profile-edit">
         <fieldset class="popup__inputs">
           <label for="inputName" class="popup__label">
-            <input type="text" id="inputName" name="Name" class="popup__input popup__input_type_name">
+            <input type="text" id="inputName" name="Name" class="popup__input popup__input_type_name" required>
           </label>
           <label for="inputJob" class="popup__label">
-            <input type="text" id="inputJob" name="Job" class="popup__input popup__input_type_job">
+            <input type="text" id="inputJob" name="Job" class="popup__input popup__input_type_job" required>
           </label>
         </fieldset>
         <button class="popup__button-submit" type="submit">Сохранить</button>
@@ -67,7 +67,7 @@
   </section>
   <section class="popup popup-image">
     <div class="popup-image__container">
-      <button class="popup-image__button-close" type="button"></button>
+      <button class="popup__button-close popup-image__button-close" type="button"></button>
       <img src="#" alt="#" class="popup-image__full-image">
       <figcaption class="popup-image__title"></figcaption>
     </div>
