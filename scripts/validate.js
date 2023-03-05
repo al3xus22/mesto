@@ -1,32 +1,32 @@
-const showInputError = (setValidation, popupForm, formInput, errorMessage) => {
+const showInputError = (validationConfig, popupForm, formInput, errorMessage) => {
   const formError = popupForm.querySelector(`.${formInput.id}-error`);
-  formInput.classList.add(setValidation.inputErrorClass);
-  formError.classList.add(setValidation.errorClass);
+  formInput.classList.add(validationConfig.inputErrorClass);
+  formError.classList.add(validationConfig.errorClass);
   formError.textContent = errorMessage;
 };
 
-const hideInputError = (setValidation, popupForm, formInput) => {
+const hideInputError = (validationConfig, popupForm, formInput) => {
   const formError = popupForm.querySelector(`.${formInput.id}-error`);
-  formInput.classList.remove(setValidation.inputErrorClass);
-  formError.classList.remove(setValidation.errorClass);
+  formInput.classList.remove(validationConfig.inputErrorClass);
+  formError.classList.remove(validationConfig.errorClass);
   formError.textContent = '';
 };
 
-const isValid = (setValidation, popupForm, formInput) => {
+const isValid = (validationConfig, popupForm, formInput) => {
   if (!formInput.validity.valid) {
-    showInputError(setValidation, popupForm, formInput, formInput.validationMessage);
+    showInputError(validationConfig, popupForm, formInput, formInput.validationMessage);
   } else {
-    hideInputError(setValidation, popupForm, formInput);
+    hideInputError(validationConfig, popupForm, formInput);
   }
 };
 
-const setEventListeners = (setValidation, popupForm) => {
-  const inputList = Array.from(popupForm.querySelectorAll(setValidation.inputSelector));
-  const buttonElement = popupForm.querySelector(setValidation.submitButtonSelector);
+const setEventListeners = (validationConfig, popupForm) => {
+  const inputList = Array.from(popupForm.querySelectorAll(validationConfig.inputSelector));
+  const buttonElement = popupForm.querySelector(validationConfig.submitButtonSelector);
   inputList.forEach((formInput) => {
     formInput.addEventListener('input', () => {
-      isValid(setValidation, popupForm, formInput);
-      toggleButtonState(setValidation, inputList, buttonElement);
+      isValid(validationConfig, popupForm, formInput);
+      toggleButtonState(validationConfig, inputList, buttonElement);
     });
   });
 };
@@ -37,20 +37,41 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (setValidation, inputList, buttonElement) => {
+const toggleButtonState = (validationConfig, inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(setValidation.inactiveButtonClass);
+    buttonElement.classList.add(validationConfig.inactiveButtonClass);
     buttonElement.disabled = true;
   } else {
-    buttonElement.classList.remove(setValidation.inactiveButtonClass);
+    buttonElement.classList.remove(validationConfig.inactiveButtonClass);
     buttonElement.disabled = false;
   }
 };
 
-const enableValidation = (setValidation) => {
-  const formList = Array.from(document.querySelectorAll(setValidation.formSelector));
+const enableValidation = (validationConfig) => {
+  const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
   formList.forEach((popupForm) => {
-    setEventListeners(setValidation, popupForm);
+    setEventListeners(validationConfig, popupForm);
   })
 };
 
+function resetErrorInput(validationConfig, popup) {
+  const form = popup.querySelector(validationConfig.formSelector);
+  const inputs = Array.from(form.querySelectorAll(validationConfig.inputSelector));
+  inputs.forEach((input) => {
+    input.classList.remove(validationConfig.inputErrorClass);
+  });
+};
+
+function resetErrorMessage(validationConfig, popup) {
+  const form = popup.querySelector(validationConfig.formSelector);
+  const formErrors = Array.from(form.querySelectorAll('.popup__input-error'));
+  formErrors.forEach((error) => {
+    error.classList.remove(validationConfig.errorClass);
+    error.textContent = '';
+  });
+};
+
+function resetValidationErrors (validationConfig, popup) {
+  resetErrorInput(validationConfig, popup);
+  resetErrorMessage(validationConfig, popup)
+};
