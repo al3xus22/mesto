@@ -1,10 +1,11 @@
 import Card from '../components/Card.js';
-import FormValidator from '../scripts/FormValidator.js';
-import { initialCards, validationConfig, popupOverlayList, cardsContainer, formAdd, addButton, popupAdd, titleInput, linkInput, popupProfileEdit, editButton, formProfileEdit, nameInput, jobInput, profileName, profileJob, closeButtonList } from '../utils/constants.js';
+import FormValidator from '../components/FormValidator.js';
+import { initialCards, validationConfig, formAdd, addButton, editButton, formProfileEdit, nameInput, jobInput, profileName, profileJob } from '../utils/constants.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+import './index.css';
 
 //Валидация формы редактирования профиля
 const formValidatorProfileEdit = new FormValidator(validationConfig, formProfileEdit);
@@ -26,18 +27,14 @@ const section = new Section({
 section.renderItems();
 
 const popupWithImage = new PopupWithImage('.popup-image');
-popupWithImage.setEventListeners();
 
 const formPopupAdd = new PopupWithForm({
   popupSelector: '.popup_add',
   handleFormSubmit: (item) => {
-    const card = createCard(item.name, item.link, '.element-template');
-    section.addItem(card);
+    section.addItem(createCard(item.title, item.link, '.element-template'));
     formPopupAdd.close();
   }
 })
-
-formPopupAdd.setEventListeners();
 
 const userInfo = new UserInfo({
   nameSelector: '.profile__name',
@@ -46,12 +43,14 @@ const userInfo = new UserInfo({
 
 const formPopupProfileEdit = new PopupWithForm({
   popupSelector: '.popup_profile-edit',
-  handleFormSubmit: (name, job) => {
-    userInfo.setUserInfo(name, job);
+  handleFormSubmit: (item) => {
+    userInfo.setUserInfo(item.name, item.job);
     formPopupProfileEdit.close();
   }
 })
 
+popupWithImage.setEventListeners();
+formPopupAdd.setEventListeners();
 formPopupProfileEdit.setEventListeners();
 
 function openPopupEditProfile() {

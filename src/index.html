@@ -6,16 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="page">
   <header class="header">
-    <img src="./images/header__logo.svg" class="header__logo" alt="Место_Россия">
+    <img src="<%=require('./images/header__logo.svg')%>" class="header__logo" alt="Место_Россия">
   </header>
   <main class="content">
     <section class="profile">
-      <img src="./images/profile__avatar.jpg" alt="Аватар" class="profile__avatar">
+      <img src="<%=require('./images/profile__avatar.jpg')%>" alt="Аватар" class="profile__avatar">
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <button class="profile__edit-button" type="button"></button>
@@ -36,11 +35,11 @@
       <form action="action" novalidate name="popupContainer" method="post" class="popup__form popup__form-profile-edit">
         <fieldset class="popup__inputs">
           <label for="name-input" class="popup__label">
-            <input type="text" id="name-input" name="Name" class="popup__input popup__input_type_name" required minlength="2" maxlength="40">
+            <input type="text" id="name-input" name="name" class="popup__input popup__input_type_name" required minlength="2" maxlength="40">
             <span class="name-input-error popup__input-error"></span>
           </label>
           <label for="job-input" class="popup__label">
-            <input type="text" id="job-input" name="Job" class="popup__input popup__input_type_job" required minlength="2" maxlength="200">
+            <input type="text" id="job-input" name="job" class="popup__input popup__input_type_job" required minlength="2" maxlength="200">
             <span class="job-input-error popup__input-error"></span>
           </label>
         </fieldset>
@@ -55,12 +54,12 @@
       <form action="action" novalidate name="popupContainer" method="post" class="popup__form popup__form_add">
         <fieldset class="popup__inputs">
           <label for="title-input" class="popup__label">
-            <input type="text" id="title-input" name="Title" placeholder="Название"
+            <input type="text" id="title-input" name="title" placeholder="Название"
               class="popup__input popup__input_type_title" required minlength="2" maxlength="30">
               <span class="title-input-error popup__input-error"></span>
           </label>
           <label for="link-input" class="popup__label">
-            <input type="url" id="link-input" name="Link" placeholder="Ссылка на картинку"
+            <input type="url" id="link-input" name="link" placeholder="Ссылка на картинку"
               class="popup__input popup__input_type_link" required>
               <span class="link-input-error popup__input-error"></span>
           </label>
