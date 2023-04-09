@@ -32,7 +32,6 @@ const formPopupAdd = new PopupWithForm({
   popupSelector: '.popup_add',
   handleFormSubmit: (item) => {
     section.addItem(createCard(item.title, item.link, '.element-template'));
-    formPopupAdd.close();
   }
 })
 
@@ -45,7 +44,6 @@ const formPopupProfileEdit = new PopupWithForm({
   popupSelector: '.popup_profile-edit',
   handleFormSubmit: (item) => {
     userInfo.setUserInfo(item.name, item.job);
-    formPopupProfileEdit.close();
   }
 })
 
@@ -55,8 +53,8 @@ formPopupProfileEdit.setEventListeners();
 
 function openPopupEditProfile() {
   formPopupProfileEdit.open();
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
+  nameInput.value = userInfo.getUserInfo().name;
+  jobInput.value = userInfo.getUserInfo().job;;
   formValidatorProfileEdit.resetValidationErrors();
   formValidatorProfileEdit.toggleButtonState();
 }

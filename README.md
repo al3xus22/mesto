@@ -8,6 +8,9 @@
 * HTML
 * CSS
 * JavaScript
+* ES6 Modules
+* ООП
+* Webpack
 
 * [Ссылка на проект](https://al3xus22.github.io/mesto)
 

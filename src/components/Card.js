@@ -3,13 +3,13 @@ class Card {
     this._title = title;
     this._image = image;
     this._templateSelector = templateSelector;
-    this._template = '.element';
+    this._cardInTemplateSelector = '.element';
     this._handleCardClick = handleCardClick;
   }
 
-  _getTemplate() {
+  _createTemplate() {
     this._cardTemplate = document.querySelector(this._templateSelector).content;
-    this._cardElement = this._cardTemplate.querySelector(this._template).cloneNode(true);
+    this._cardElement = this._cardTemplate.querySelector(this._cardInTemplateSelector).cloneNode(true);
     this._trashButton = this._cardElement.querySelector('.element__trash');
     this._likeButton = this._cardElement.querySelector('.element__button-like');
     this._elementTitle = this._cardElement.querySelector('.element__name');;
@@ -17,10 +17,10 @@ class Card {
   }
 
   generateCard() {
-    this._getTemplate();
-    this._cardElement.querySelector('.element__image').src = this._image;
-    this._cardElement.querySelector('.element__name').textContent = this._title;
-    this._cardElement.querySelector('.element__image').alt = this._title;
+    this._createTemplate();
+    this._cardImage.src = this._image;
+    this._elementTitle.textContent = this._title;
+    this._cardImage.alt = this._title;
     this._setEventListeners();
     return this._cardElement;
 
@@ -33,6 +33,10 @@ class Card {
   _deleteCard = () => {
     this._cardElement.remove();
     this._cardElement = null;
+    this._likeButton = null;
+    this._elementTitle = null;
+    this._cardImage = null;
+    this._trashButton = null;
   }
 
   _setEventListeners() {
