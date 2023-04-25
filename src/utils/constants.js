@@ -42,3 +42,6 @@ export const nameInput = formProfileEdit.querySelector('.popup__input_type_name'
 export const jobInput = formProfileEdit.querySelector('.popup__input_type_job');
 export const profileName = document.querySelector('.profile__name');
 export const profileJob = document.querySelector('.profile__job');
+export const updateAvatarButton = document.querySelector('.profile__avatar-edit');
+export const popupUpdateAvatar = document.querySelector('.popup_update-avatar');
+export const linkInputUpdateAvatar = popupUpdateAvatar.querySelector('.popup__input_type_link');
