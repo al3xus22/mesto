@@ -50,9 +50,9 @@ function createCard(data, templateSelector) {
           .catch((err) => {
             console.log('Ошибка. Запрос не выполнен: ', err);
           })
-          .finally(()=> {
+          .finally(() => {
             popupConfirmDelete.loading(false);
-           })
+          })
       })
     },
     (card) => {
@@ -83,7 +83,6 @@ const userInfo = new UserInfo({
   avatar: '.profile__avatar'
 });
 
-
 //Секция карточек------------------------
 const section = new Section({
   renderer: (data) => {
@@ -91,7 +90,6 @@ const section = new Section({
   }
 },
   '.elements');
-
 
 //Попапы--------------------------------
 const popupWithImage = new PopupWithImage('.popup-image');
@@ -102,15 +100,15 @@ const formPopupAdd = new PopupWithForm({
     formPopupAdd.loading(true);
     api.addNewCard({ title, link })
       .then((data) => {
-        section.addItem(createCard(data, '.element-template'));
+        section.addNewItem(createCard(data, '.element-template'));
         formPopupAdd.close();
       })
       .catch((err) => {
         console.log('Ошибка. Запрос не выполнен: ', err);
       })
-      .finally(()=> {
+      .finally(() => {
         formPopupAdd.loading(false);
-       });
+      });
   }
 });
 
@@ -126,9 +124,9 @@ const formPopupProfileEdit = new PopupWithForm({
       .catch((err) => {
         console.log('Ошибка. Запрос не выполнен: ', err);
       })
-      .finally(()=> {
+      .finally(() => {
         formPopupProfileEdit.loading(false);
-       });
+      });
   }
 });
 
@@ -144,14 +142,13 @@ const updateAvatar = new PopupWithForm({
       .catch((err) => {
         console.log('Ошибка. Запрос не выполнен: ', err);
       })
-      .finally(()=> {
+      .finally(() => {
         updateAvatar.loading(false);
-       });
+      });
   }
 });
 
 const popupConfirmDelete = new PopupConfirm('.popup_confirm')
-
 
 //Попапы при открытии-------------------
 function openPopupEditProfile() {
@@ -174,8 +171,6 @@ function openPopupUpdateAvatar() {
   formValidatorUpdateAvatar.resetValidationErrors();
   formValidatorUpdateAvatar.toggleButtonState();
 }
-
-
 
 //Слушатели-----------------------------
 popupConfirmDelete.setEventListeners();
